@@ -1,0 +1,2 @@
+# INTENTIONAL -- examples
+addFilter("E: devel-file-in-non-devel-package")
