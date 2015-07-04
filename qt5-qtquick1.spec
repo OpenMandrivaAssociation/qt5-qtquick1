@@ -1,27 +1,28 @@
 %define api %(echo %{version}|cut -d. -f1)
 %define major %api
-%define beta
+%define beta %nil
 
 %define declarative %mklibname qt%{api}declarative %{api}
 %define declaratived %mklibname qt%{api}declarative -d
 
-%define qttarballdir qtquick1-opensource-src-%{version}%{?beta:-%{beta}}
 %define _qt_prefix %{_libdir}/qt%{api}
 
 Name:		qt5-qtquick1
 Version:	5.5.0
 %if "%{beta}" != ""
 Release:	1.%{beta}.1
-Source0:	http://download.qt.io/development_releases/qt/%(echo %{version} |cut -d. -f1-2)/%{version}-%{beta}/submodules/%{qttarballdir}.tar.xz
+%define qttarballdir qtquick1-opensource-src-%{version}-%{beta}
+Source0:	http://download.qt.io/development_releases/qt/%(echo %{version}|cut -d. -f1-2)/%{version}-%{beta}/submodules/%{qttarballdir}.tar.xz
 %else
 Release:	1
-Source0:	http://download.qt.io/official_releases/qt/%(echo %{version} |cut -d. -f1-2)/%{version}/submodules/%{qttarballdir}.tar.xz
+%define qttarballdir qtquick1-opensource-src-%{version}
+Source0:	http://download.qt.io/official_releases/qt/%(echo %{version}|cut -d. -f1-2)/%{version}/submodules/%{qttarballdir}.tar.xz
 %endif
 Source100:	%{name}.rpmlintrc
 Summary:	QtQuick 1.x library
 Group:		System/Libraries
 License:	LGPLv2 with exceptions or GPLv3 with exceptions and GFDL
-URL:		http://www.qt-project.org
+URL:		http://www.qt.io
 BuildRequires: 	pkgconfig(Qt5Core) = %{version}
 BuildRequires: 	qt5-qtbase-devel = %{version}
 BuildRequires: 	qt5-qtscript-private-devel = %{version}
@@ -32,7 +33,7 @@ BuildRequires:	pkgconfig(Qt5Test) = %{version}
 BuildRequires: 	pkgconfig(Qt5Widgets) = %{version}
 
 %description
-Support for the old QtQuick 1.x API
+Support for the old QtQuick 1.x API.
 
 %files
 %{_qt_prefix}/bin/qml1plugindump
@@ -61,7 +62,7 @@ Group:    Development/KDE and Qt
 Requires: %{declarative} = %{EVRD}
 
 %description -n %{declaratived}
-Devel files needed to build apps based on QtQuick 1.x
+Devel files needed to build apps based on QtQuick 1.x.
 
 %files -n %{declaratived}
 %_qt5_libdir/libQt5Declarative.prl
@@ -79,7 +80,7 @@ Summary: Examples for QtQuick 1.x
 Group: Development/KDE and Qt
 
 %description examples
-Examples for QtQuick 1.x
+Examples for QtQuick 1.x.
 
 %files examples
 %{_libdir}/qt5/examples/declarative
