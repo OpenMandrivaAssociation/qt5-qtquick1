@@ -24,7 +24,7 @@ Group:		System/Libraries
 License:	LGPLv2 with exceptions or GPLv3 with exceptions and GFDL
 URL:		http://www.qt.io
 BuildRequires: 	pkgconfig(Qt5Core) = %{version}
-BuildRequires: 	qmake5 = %{version}
+BuildRequires: 	qt5-qtbase-devel = %{version}
 BuildRequires: 	qt5-qtscript-private-devel = %{version}
 BuildRequires:	pkgconfig(Qt5Network) = %{version}
 BuildRequires:	pkgconfig(Qt5Sql) = %{version}
