@@ -8,7 +8,7 @@
 %define _qt_prefix %{_libdir}/qt%{api}
 
 Name:		qt5-qtquick1
-Version:	5.5.0
+Version:	5.5.1
 %if "%{beta}" != ""
 Release:	1.%{beta}.1
 %define qttarballdir qtquick1-opensource-src-%{version}-%{beta}
@@ -24,7 +24,7 @@ Group:		System/Libraries
 License:	LGPLv2 with exceptions or GPLv3 with exceptions and GFDL
 URL:		http://www.qt.io
 BuildRequires: 	pkgconfig(Qt5Core) = %{version}
-BuildRequires: 	qt5-qtbase-devel = %{version}
+BuildRequires: 	qmake5 = %{version}
 BuildRequires: 	qt5-qtscript-private-devel = %{version}
 BuildRequires:	pkgconfig(Qt5Network) = %{version}
 BuildRequires:	pkgconfig(Qt5Sql) = %{version}
