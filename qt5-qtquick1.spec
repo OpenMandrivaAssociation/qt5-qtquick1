@@ -23,14 +23,14 @@ Summary:	QtQuick 1.x library
 Group:		System/Libraries
 License:	LGPLv2 with exceptions or GPLv3 with exceptions and GFDL
 URL:		http://www.qt.io
-BuildRequires: 	pkgconfig(Qt5Core) = %{version}
-BuildRequires: 	qt5-qtbase-devel = %{version}
-BuildRequires: 	qt5-qtscript-private-devel = %{version}
-BuildRequires:	pkgconfig(Qt5Network) = %{version}
-BuildRequires:	pkgconfig(Qt5Sql) = %{version}
-BuildRequires:	pkgconfig(Qt5Gui) = %{version}
-BuildRequires:	pkgconfig(Qt5Test) = %{version}
-BuildRequires: 	pkgconfig(Qt5Widgets) = %{version}
+BuildRequires: 	pkgconfig(Qt5Core) >= %{version}
+BuildRequires: 	qmake5 >= %{version}
+BuildRequires: 	qt5-qtscript-private-devel >= %{version}
+BuildRequires:	pkgconfig(Qt5Network) >= %{version}
+BuildRequires:	pkgconfig(Qt5Sql) >= %{version}
+BuildRequires:	pkgconfig(Qt5Gui) >= %{version}
+BuildRequires:	pkgconfig(Qt5Test) >= %{version}
+BuildRequires: 	pkgconfig(Qt5Widgets) >= %{version}
 
 %description
 Support for the old QtQuick 1.x API.
@@ -86,8 +86,6 @@ Examples for QtQuick 1.x.
 %{_libdir}/qt5/examples/declarative
 
 #------------------------------------------------------------------------------
-
-
 
 %prep
 %setup -q -n %qttarballdir
