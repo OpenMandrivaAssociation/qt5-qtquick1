@@ -8,7 +8,7 @@
 %define _qt_prefix %{_libdir}/qt%{api}
 
 Name:		qt5-qtquick1
-Version:	5.5.1
+Version:	5.6.0
 %if "%{beta}" != ""
 Release:	1.%{beta}.1
 %define qttarballdir qtquick1-opensource-src-%{version}-%{beta}
@@ -16,6 +16,12 @@ Source0:	http://download.qt.io/development_releases/qt/%(echo %{version}|cut -d.
 %else
 Release:	4
 %define qttarballdir qtquick1-opensource-src-%{version}
+# The source for this package was pulled from upstream's vcs.  Use the
+# following commands to generate the tarball:
+# git clone git@github.com:qtproject/qtquick1.git && cd qtquick1
+# git archive --prefix=qt5-qtquick1-opensource-src-5.6.0-beta/ origin/5.6 | tar -x -C ..
+# cd ../qt5-qtquick1-opensource-src-5.6.0-beta && syncqt.pl -version 5.6.0 && cd ..
+# tar cfJ qt5-qtquick1-opensource-src-5.6.0-beta.tar.xz qt5-qtquick1-opensource-src-5.6.0-beta
 Source0:	http://download.qt.io/official_releases/qt/%(echo %{version}|cut -d. -f1-2)/%{version}/submodules/%{qttarballdir}.tar.xz
 %endif
 Source100:	%{name}.rpmlintrc
