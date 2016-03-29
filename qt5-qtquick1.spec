@@ -7,6 +7,7 @@
 
 %define _qt_prefix %{_libdir}/qt%{api}
 
+# THIS PACKAGE DEPRECATED
 Name:		qt5-qtquick1
 Version:	5.6.0
 %if "%{beta}" != ""
