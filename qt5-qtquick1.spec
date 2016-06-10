@@ -9,20 +9,20 @@
 
 # THIS PACKAGE DEPRECATED
 Name:		qt5-qtquick1
-Version:	5.6.0
+Version:	5.6.1
 %if "%{beta}" != ""
-Release:	1.%{beta}.1
+Release:	0.%{beta}.1
 %define qttarballdir qtquick1-opensource-src-%{version}-%{beta}
 Source0:	http://download.qt.io/development_releases/qt/%(echo %{version}|cut -d. -f1-2)/%{version}-%{beta}/submodules/%{qttarballdir}.tar.xz
 %else
-Release:	4
+Release:	1
 %define qttarballdir qtquick1-opensource-src-%{version}
 # The source for this package was pulled from upstream's vcs.  Use the
 # following commands to generate the tarball:
 # git clone git@github.com:qtproject/qtquick1.git && cd qtquick1
-# git archive --prefix=qt5-qtquick1-opensource-src-5.6.0-beta/ origin/5.6 | tar -x -C ..
-# cd ../qt5-qtquick1-opensource-src-5.6.0-beta && syncqt.pl -version 5.6.0 && cd ..
-# tar cfJ qt5-qtquick1-opensource-src-5.6.0-beta.tar.xz qt5-qtquick1-opensource-src-5.6.0-beta
+# git archive --prefix=qt5-qtquick1-opensource-src-5.6.1/ origin/5.6.1 | tar -x -C ..
+# cd ../qt5-qtquick1-opensource-src-5.6.1 && syncqt.pl -version 5.6.1 && cd ..
+# tar cfJ qt5-qtquick1-opensource-src-5.6.1.tar.xz qt5-qtquick1-opensource-src-5.6.1
 Source0:	http://download.qt.io/official_releases/qt/%(echo %{version}|cut -d. -f1-2)/%{version}/submodules/%{qttarballdir}.tar.xz
 %endif
 Source100:	%{name}.rpmlintrc
@@ -60,6 +60,7 @@ Qt%{api} QtQuick 1.x Lib.
 
 %files -n %{declarative}
 %{_qt5_libdir}/libQt5Declarative.so.%{api}*
+%{_libdir}/qt5/plugins/designer/libqdeclarativeview.so
 
 #------------------------------------------------------------------------------
 
@@ -79,6 +80,7 @@ Devel files needed to build apps based on QtQuick 1.x.
 %_libdir/libQt5Declarative.so
 %_qt_prefix/mkspecs/modules/qt_lib_declarative.pri
 %_qt_prefix/mkspecs/modules/qt_lib_declarative_private.pri
+%{_libdir}/cmake/Qt5Designer/Qt5Designer_QDeclarativeViewPlugin.cmake
 
 #------------------------------------------------------------------------------
 
@@ -95,7 +97,7 @@ Examples for QtQuick 1.x.
 #------------------------------------------------------------------------------
 
 %prep
-%setup -q -n %qttarballdir
+%setup -q -n qt5-%qttarballdir
 
 %build
 %qmake_qt5
