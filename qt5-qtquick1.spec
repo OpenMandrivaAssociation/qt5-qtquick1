@@ -33,6 +33,7 @@ URL:		http://www.qt.io
 BuildRequires: 	pkgconfig(Qt5Core) >= %{version}
 BuildRequires: 	qmake5 >= %{version}
 BuildRequires: 	qt5-qtscript-private-devel >= %{version}
+BuildRequires:	pkgconfig(Qt5Designer) >= %{version}
 BuildRequires:	pkgconfig(Qt5Network) >= %{version}
 BuildRequires:	pkgconfig(Qt5Sql) >= %{version}
 BuildRequires:	pkgconfig(Qt5Gui) >= %{version}
