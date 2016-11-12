@@ -9,20 +9,20 @@
 
 # THIS PACKAGE DEPRECATED
 Name:		qt5-qtquick1
-Version:	5.6.1
+Version:	5.7.1
 %if "%{beta}" != ""
 Release:	0.%{beta}.1
-%define qttarballdir qtquick1-opensource-src-%{version}-%{beta}
+%define qttarballdir qt5-qtquick1-opensource-src-%{version}-%{beta}
 Source0:	http://download.qt.io/development_releases/qt/%(echo %{version}|cut -d. -f1-2)/%{version}-%{beta}/submodules/%{qttarballdir}.tar.xz
 %else
 Release:	1
-%define qttarballdir qtquick1-opensource-src-%{version}
+%define qttarballdir qt5-qtquick1-opensource-src-%{version}
 # The source for this package was pulled from upstream's vcs.  Use the
 # following commands to generate the tarball:
 # git clone git@github.com:qtproject/qtquick1.git && cd qtquick1
-# git archive --prefix=qt5-qtquick1-opensource-src-5.6.1/ origin/5.6.1 | tar -x -C ..
-# cd ../qt5-qtquick1-opensource-src-5.6.1 && syncqt.pl -version 5.6.1 && cd ..
-# tar cfJ qt5-qtquick1-opensource-src-5.6.1.tar.xz qt5-qtquick1-opensource-src-5.6.1
+# git archive --prefix=qt5-qtquick1-opensource-src-5.7.1/ origin/5.7 | tar -x -C .. -f -
+# cd ../qt5-qtquick1-opensource-src-5.7.1 && /usr/lib64/qt5/bin/syncqt.pl -version 5.7.1 && cd ..
+# tar cfJ qt5-qtquick1-opensource-src-5.7.1.tar.xz qt5-qtquick1-opensource-src-5.7.1
 Source0:	http://download.qt.io/official_releases/qt/%(echo %{version}|cut -d. -f1-2)/%{version}/submodules/%{qttarballdir}.tar.xz
 %endif
 Source100:	%{name}.rpmlintrc
@@ -33,7 +33,7 @@ URL:		http://www.qt.io
 BuildRequires: 	pkgconfig(Qt5Core) >= %{version}
 BuildRequires: 	qmake5 >= %{version}
 BuildRequires: 	qt5-qtscript-private-devel >= %{version}
-BuildRequires:	pkgconfig(Qt5Designer) >= %{version}
+BuildRequires:	cmake(Qt5Designer)
 BuildRequires:	pkgconfig(Qt5Network) >= %{version}
 BuildRequires:	pkgconfig(Qt5Sql) >= %{version}
 BuildRequires:	pkgconfig(Qt5Gui) >= %{version}
@@ -98,7 +98,7 @@ Examples for QtQuick 1.x.
 #------------------------------------------------------------------------------
 
 %prep
-%setup -q -n qt5-%qttarballdir
+%setup -q -n %qttarballdir
 
 %build
 %qmake_qt5
