@@ -15,7 +15,7 @@ Release:	0.%{beta}.1
 %define qttarballdir qt5-qtquick1-opensource-src-%{version}-%{beta}
 Source0:	http://download.qt.io/development_releases/qt/%(echo %{version}|cut -d. -f1-2)/%{version}-%{beta}/submodules/%{qttarballdir}.tar.xz
 %else
-Release:	2
+Release:	3
 %define qttarballdir qt5-qtquick1-opensource-src-%{version}
 # The source for this package was pulled from upstream's vcs.  Use the
 # following commands to generate the tarball:
