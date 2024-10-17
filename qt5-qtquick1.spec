@@ -29,7 +29,7 @@ Source100:	%{name}.rpmlintrc
 Summary:	QtQuick 1.x library
 Group:		System/Libraries
 License:	LGPLv2 with exceptions or GPLv3 with exceptions and GFDL
-URL:		http://www.qt.io
+URL:		https://www.qt.io
 BuildRequires: 	pkgconfig(Qt5Core) >= %{version}
 BuildRequires: 	qmake5 >= %{version}
 BuildRequires: 	qt5-qtscript-private-devel >= %{version}
